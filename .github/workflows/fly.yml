@@ -15,7 +15,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: change directory
-        run: cd directory
-      - name: now deploy!
-        run: flyctl deploy --remote-only
+      - run: cd directory && echo 'boboddy  BO BODDY' && flyctl deploy --remote-only
