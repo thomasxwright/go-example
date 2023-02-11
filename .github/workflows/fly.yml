@@ -4,12 +4,15 @@ on:
   push:
     branches:
       - master
-      # note that your "main" branch might be called main instead of master
+      # note that your "main" branch mght be called main instead of master
 
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 jobs:
-  hello_world_job:
-    runs-on: ubuntu-20.04
+  deploy:
+    name: Deploy app
+    runs-on: ubuntu-latest
     steps:
-      - name: Say hello
-        run: |
-          echo "Hello World!"
+      - uses: actions/checkout@v3
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
